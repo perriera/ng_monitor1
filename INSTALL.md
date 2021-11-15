@@ -1,15 +1,15 @@
 ## Shared Library support
-If wish to install your cpp_starter-based project as a shared library there are two methods.
+If wish to install your ng_monitor-based project as a shared library there are two methods.
 
 ## standard sudo make install
 
 The following command will install all the targets specified in your CMakeLists.txt into the standard Linux areas for header files and binaries:
 
 	sudo make install
-However, quite often you will be upgrading **cpp_starter** so a better way to install **cpp_starter** is by using **sudo checkinstall**.
+However, quite often you will be upgrading **ng_monitor** so a better way to install **ng_monitor** is by using **sudo checkinstall**.
 
 ## sudo checkinstall
-Since you will be working on different versions of **cpp_starter** it is important that you be able to make a clean uninstall, (when required) , To be able to uninstall you will need to install the Ubuntu **checkinstall** package: [here](https://help.ubuntu.com/community/CheckInstall). 
+Since you will be working on different versions of **ng_monitor** it is important that you be able to make a clean uninstall, (when required) , To be able to uninstall you will need to install the Ubuntu **checkinstall** package: [here](https://help.ubuntu.com/community/CheckInstall). 
 
 `sudo apt-get update && sudo apt-get install checkinstall`
 
@@ -75,6 +75,6 @@ If you are interested in having <your_project> setup for deployment as a Ubuntu 
 >
  	sudo add-apt-repository ppa:admin/ppa-dmg
  	sudo apt update
-	sudo apt install openssl libssl-dev libcurlpp-dev cpp_starter
+	sudo apt install openssl libssl-dev libcurlpp-dev ng_monitor
 	
  

@@ -1,4 +1,4 @@
-#include "cpp_starter/game/ChessGame.hpp"
+#include "ng_monitor/game/ChessGame.hpp"
 #include <extras/interfaces.hpp>
 #include <iostream>
 

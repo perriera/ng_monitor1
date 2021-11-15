@@ -1,6 +1,6 @@
 
 #include <iostream>
-#include "cpp_starter/game/ChessGame.hpp"
+#include "ng_monitor/game/ChessGame.hpp"
 
 #include "../vendor/catch.hpp"
 #include "../vendor/fakeit.hpp"
