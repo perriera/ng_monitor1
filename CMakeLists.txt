@@ -88,29 +88,14 @@ print(STATUS "CMAKE_C_FLAGS: ${CMAKE_C_FLAGS}")
 # can tell extras to build spdlog as a static library (for faster compile times) by settings
 # MAKE_SPDLOG_SHARED OFF
 #
-CPMAddPackage(
-  NAME extras
-  GITHUB_REPOSITORY perriera/extras
-  VERSION 5.0.9
-  OPTIONS "MAKE_SPDLOG_SHARED OFF"
-  OPTIONS "MAKE_EXTRAS_LIBRARY_ONLY ON"
-)
-if(extras_ADDED)
-  #
-  # NOTE:  enable c++11 to avoid compilation errors, and force spdlog into release build
-  #
-  print(STATUS "Configuring extras build properties")
-  set_target_properties(extras PROPERTIES CMAKE_BUILD_TYPE Release)
-else()
-  print(WARNING "extras was not configured properly")
-endif()
 
 CPMAddPackage(
   NAME rsi
   GITHUB_REPOSITORY perriera/extras_rsi
-  VERSION 2.2.0
+  VERSION 2.3.0
   OPTIONS "MAKE_SPDLOG_SHARED OFF"
   OPTIONS "MAKE_EXTRAS_LIBRARY_ONLY ON"
+  OPTIONS "MAKE_EXPARX_RSI_LIBRARY_ONLY ON"
 )
 if(rsi_ADDED)
   #
