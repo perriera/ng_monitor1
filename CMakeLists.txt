@@ -92,7 +92,7 @@ print(STATUS "CMAKE_C_FLAGS: ${CMAKE_C_FLAGS}")
 CPMAddPackage(
   NAME rsi
   GITHUB_REPOSITORY perriera/extras_rsi
-  VERSION 2.4.0
+  VERSION 2.5.0
   OPTIONS "MAKE_SPDLOG_SHARED OFF"
   OPTIONS "MAKE_EXTRAS_LIBRARY_ONLY ON"
   OPTIONS "MAKE_EXPARX_RSI_LIBRARY_ONLY ON"
@@ -141,9 +141,9 @@ endif()
 # includes ALL headers and sources under include/ and src/. So, to keep two or more main() 
 # declarations seperate, we place any sources that have a main() in the instances/ folder
 #
-add_executable(main instances/main.cpp) 
-target_include_directories(main PUBLIC ${INCLUDES})
-target_link_libraries(main PRIVATE ${PROJECT_NAME} stdc++fs extras rsi)
+add_executable(ng-monitor instances/ng-monitor.cpp) 
+target_include_directories(ng-monitor PUBLIC ${INCLUDES})
+target_link_libraries(ng-monitor PRIVATE ${PROJECT_NAME} stdc++fs extras rsi)
 
 #
 # NOTE: Install all shared libraries
