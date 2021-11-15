@@ -1,7 +1,8 @@
 #include <iostream>
-#include "ng_monitor/game/ChessGame.hpp"
+#include <ng_monitor/game/ChessGame.hpp>
 #include "../vendor/catch.hpp"
 #include <extras/crcs.hpp>
+#include <extras/filesystem/paths.hpp>
 #include <rsi/parcel/Parcel.hpp>
 #include <filesystem>
 
