@@ -105,6 +105,23 @@ else()
   print(WARNING "extras was not configured properly")
 endif()
 
+CPMAddPackage(
+  NAME rsi
+  GITHUB_REPOSITORY perriera/extras_rsi
+  VERSION 2.2.0
+  OPTIONS "MAKE_SPDLOG_SHARED OFF"
+  OPTIONS "MAKE_EXTRAS_LIBRARY_ONLY ON"
+)
+if(rsi_ADDED)
+  #
+  # NOTE:  enable c++11 to avoid compilation errors, and force spdlog into release build
+  #
+  print(STATUS "Configuring rsi build properties")
+  set_target_properties(rsi PROPERTIES CMAKE_BUILD_TYPE Release)
+else()
+  print(WARNING "rsi was not configured properly")
+endif()
+
 #
 # HACK: glob src files and header files
 #
@@ -117,7 +134,7 @@ file(GLOB_RECURSE NG_MONITOR_SOURCE CONFIGURE_DEPENDS "${SOURCES}/*.cpp")
 #
 add_library(${PROJECT_NAME} SHARED ${NG_MONITOR_HEADERS} ${NG_MONITOR_SOURCE})
 target_include_directories(${PROJECT_NAME} PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
-target_link_libraries(${PROJECT_NAME} PRIVATE stdc++fs extras)
+target_link_libraries(${PROJECT_NAME} PRIVATE stdc++fs extras rsi)
 
 #
 # NOTE: declare unit test cases here all source should have adequate test cases whether they be mock
@@ -129,7 +146,7 @@ if(NG_MONITOR_TESTS)
   set(TEST_EXEC "run-unittests-${PROJECT_NAME}")
   add_executable(${TEST_EXEC} ${NG_MONITOR_TESTS})
   target_include_directories(${TEST_EXEC} PUBLIC ${INCLUDES})
-  target_link_libraries(${TEST_EXEC} PRIVATE ${PROJECT_NAME} stdc++fs extras )
+  target_link_libraries(${TEST_EXEC} PRIVATE ${PROJECT_NAME} stdc++fs extras rsi)
 endif()
 
 #
@@ -140,7 +157,7 @@ endif()
 #
 add_executable(main instances/main.cpp) 
 target_include_directories(main PUBLIC ${INCLUDES})
-target_link_libraries(main PRIVATE ${PROJECT_NAME} stdc++fs extras )
+target_link_libraries(main PRIVATE ${PROJECT_NAME} stdc++fs extras rsi)
 
 #
 # NOTE: Install all shared libraries
