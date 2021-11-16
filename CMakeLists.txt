@@ -92,7 +92,7 @@ print(STATUS "CMAKE_C_FLAGS: ${CMAKE_C_FLAGS}")
 CPMAddPackage(
   NAME rsi
   GITHUB_REPOSITORY perriera/extras_rsi
-  VERSION 2.6.0
+  VERSION 2.9.0
   OPTIONS "MAKE_SPDLOG_SHARED OFF"
   OPTIONS "MAKE_EXTRAS_LIBRARY_ONLY ON"
   OPTIONS "MAKE_EXPARX_RSI_LIBRARY_ONLY ON"
@@ -108,6 +108,23 @@ else()
   print(WARNING "rsi was not configured properly")
 endif()
 
+CPMAddPackage(
+  NAME ng_imploder
+  GITHUB_REPOSITORY perriera/ng_imploder
+  VERSION 0.3.0
+  OPTIONS "MAKE_SPDLOG_SHARED OFF"
+  OPTIONS "MAKE_EXTRAS_LIBRARY_ONLY ON"
+  OPTIONS "MAKE_NG_IMPLODER_LIBRARY_ONLY ON"
+)
+if(ng_imploder_ADDED)
+  #
+  # NOTE:  enable c++11 to avoid compilation errors, and force spdlog into release build
+  #
+  print(STATUS "Configuring ng_imploder build properties")
+  set_target_properties(ng_imploder PROPERTIES CMAKE_BUILD_TYPE Release)
+else()
+  print(WARNING "ng_imploder was not configured properly")
+endif()
 #
 # HACK: glob src files and header files
 #

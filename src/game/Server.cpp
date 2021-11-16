@@ -8,6 +8,9 @@
 using namespace std;
 namespace fs = std::filesystem;
 
+// build/_deps/rsi-build//socketpool_server 127.0.0.1 8080 send.txt upload download
+// build/_deps/rsi-build//socketpool_client 127.0.0.1 8080 8080 data/cplusplusorg.freeformjs.imploded.zip upload vendor download
+
 namespace extras {
 
     /**
